@@ -1,0 +1,7 @@
+---
+# handlers file for infra-apache
+
+- name: restart web service
+  ansible.builtin.service:
+    name: httpd
+    state: restarted

@@ -1,0 +1,6 @@
+---
+- name: ensure needed services are enabled/started 
+  ansible.builtin.dnf:
+    name: httpd
+    enabled: true
+    state: started

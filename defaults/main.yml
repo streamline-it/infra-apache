@@ -1,0 +1,6 @@
+---
+# defaults file for infra-apache
+
+apache_content_dst: /var/www/html
+apache_group: apache
+

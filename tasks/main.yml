@@ -1,0 +1,17 @@
+---
+# tasks file for infra-apache
+
+- name: call tasks to install needed packages
+  ansible.builtin.import_tasks: "tasks/install_pkgs_{{ ansible_distribution }}.yml"
+
+- name: call tasks needed to start/enable needed services
+  ansible.buitlin.import_tasks: "tasks/start_enable_svc_{{ ansible_distribution }}.yml"
+
+- name: ensure needed config is installed
+  notify: restart web service
+  ansible.builtin.copy:
+    src: index.html
+    dest: "{{ apache_content_dst }}"
+    owner: root
+    group: "{{ apache_group }}"
+    mode: "0640"
